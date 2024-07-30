@@ -1,0 +1,89 @@
+<div class="row justify-content-center align-items-center g-2">
+
+    <div class="col-6">
+
+        <div class="card border-secondary">
+            <div class="card-body">
+                <h4 class="card-title">My Form</h4>
+                <div class="m-3">
+                    <label class="m-3">Enter country</label>
+                    <input type="text" [(ngModel)]="countryName">
+                </div>
+                <button (click)="btnShowInfoClick()" type="button" class="btn btn-secondary">
+                    Show Info
+                </button>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-6">
+        @if(showInfoForm){
+        <div class="card myDisplayForm">
+            <div class="card-body">
+                <h4 class="card-title">{{country.name}}</h4>
+                <button (click)="btnAcceptClick()" type="button" class="btn btn-primary">
+                    Accept
+                </button>
+                <p class="card-text">{{country.capital}}</p>
+                <p class="card-text">{{country.region}}</p>
+                <img class="img-fluid" src={{country.flag}} alt="img">
+
+                
+
+            </div>
+        </div>
+        }
+
+
+    </div>
+</div>
+
+
+<div class="row justify-content-center align-items-center g-2 ">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Countries list</h4>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for(c of countries; track c; let i = $index){
+                        <tr>
+                            <td>{{i+1}} </td>
+                            <td>{{c.name}}</td>
+                            <td>
+                                <button (click)="btnInfoClick(c)" type="button" class="btn btn-secondary">
+                                    Info
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="col-6"></div>
+
+</div>
